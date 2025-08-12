@@ -1,0 +1,70 @@
+// This file is part of www.nand2tetris.org
+// and the book "The Elements of Computing Systems"
+// by Nisan and Schocken, MIT Press.
+// File name: projects/1/Mux.hdl
+/** 
+ * Multiplexor:
+ * if (sel = 0) out = a, else out = b
+ */
+CHIP Mux {
+    IN x, y;
+    OUT f;
+
+    PARTS:
+    And(a=x, b=y, out=xy);
+    Not(in=xy, out=f);
+}
+--------------------------------------
+// This file is part of www.nand2tetris.org
+// and the book "The Elements of Computing Systems"
+// by Nisan and Schocken, MIT Press.
+// File name: projects/1/Mux.hdl
+/** 
+ * Multiplexor:
+ * if (sel = 0) out = a, else out = b
+ */
+CHIP Mux {
+   IN x, y;
+    OUT f;
+
+    PARTS:
+    Not(in=x, out=nx);
+    Not(in=y, out=ny);
+    Or(a=nx, b=ny, out=f);
+}
+------------------------------------
+// This file is part of www.nand2tetris.org
+// and the book "The Elements of Computing Systems"
+// by Nisan and Schocken, MIT Press.
+// File name: projects/1/Mux.hdl
+/** 
+ * Multiplexor:
+ * if (sel = 0) out = a, else out = b
+ */
+CHIP Mux {
+   IN x, y;
+    OUT f;
+
+    PARTS:
+    Or(a=x, b=y, out=xy);
+    Not(in=xy, out=f);
+}
+-----------------------------------
+// This file is part of www.nand2tetris.org
+// and the book "The Elements of Computing Systems"
+// by Nisan and Schocken, MIT Press.
+// File name: projects/1/Mux.hdl
+/** 
+ * Multiplexor:
+ * if (sel = 0) out = a, else out = b
+ */
+CHIP Mux {
+    IN x, y;
+    OUT f;
+
+    PARTS:
+    Not(in=x, out=nx);
+    Not(in=y, out=ny);
+    And(a=nx, b=ny, out=f);
+}
+
