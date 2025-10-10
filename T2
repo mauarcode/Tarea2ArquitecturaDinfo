@@ -1,0 +1,28 @@
+CHIP Mux{
+    IN x, y, z;
+    OUT f;
+    
+    PARTS:
+    Not(in=x, out=notx);
+    Not(in=y, out=noty);
+    Not(in=z, out=notz);
+    And(a=x, b=noty, out=xnoty);
+    Or(a=notx, b=xnoty, out=xnotynotx);
+    And(a=notz, b=xnotynotx, out=f);
+}
+
+CHIP Mux{
+    IN x, y, z;
+    OUT f;
+    
+    PARTS:
+    Not(in=x, out=notx);
+    Not(in=y, out=noty);
+    Not(in=z, out=notz);
+    And(a=y, b=notz, out=ynotz);
+    And(a=noty, b=z, out=znoty);
+    And(a=x, b=y, out=xy);
+    Or(a=znoty, b=ynotz, out=znotyynotz);
+    And(a=notx, b=znotyynotz, out=notxznotyynotz);
+    Or(a=notxznotyynotz, b=xy, out=f);
+}
