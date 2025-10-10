@@ -1,0 +1,49 @@
+CHIP Mux{
+    IN x;
+    OUT f;
+    
+    PARTS:
+    Nand(a=x, b=x, out=f);
+}
+
+CHIP Mux{
+    IN x, y;
+    OUT f;
+    
+    PARTS:
+    Nand(a=x, b=y, out=xy);
+    Nand(a=xy, b=xy, out= f);
+}
+
+CHIP Mux{
+    IN x;
+    OUT f;
+    
+    PARTS:
+    Nand(a=x, b=x, out=xx);
+    Nand(a=xx, b=xx, out=xxxx);
+    Nand(a=xxxx, b=xxxx, out=xxxxxxxx);
+    Nand(a=xxxxxxxx, b=xxxxxxxx, out=f);
+
+}
+
+CHIP Mux {
+    IN a, b, sel;
+    OUT f;
+
+    PARTS:
+    Not(in=sel, out=notsel);
+    And(a=notsel, b=a, out=anotsel);
+    And(a=sel, b=b, out=bsel);
+    Or(a=anotsel, b=bsel, out=f);
+}
+
+CHIP DMux {
+    IN in, sel;
+    OUT a, b;
+
+    PARTS:
+    Not(in=sel, out=notsel);
+    And(a=notsel, b=in, out=a);
+    And(a=sel, b=in, out=b);
+}
